@@ -6,6 +6,9 @@ public class CameraPlaneController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (WebCamTexture.devices.Length <= 0) {
+			return;
+		}
 		WebCamTexture deviceCameraTexture = new WebCamTexture ();
 		gameObject.GetComponent<Renderer> ().material.mainTexture = deviceCameraTexture;
 		deviceCameraTexture.Play ();

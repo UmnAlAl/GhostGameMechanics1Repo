@@ -46,13 +46,44 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ARToolKit5-Unity\Examples\Fisticuffs\Scripts\AnimationBehaviors.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Examples\Fisticuffs\Scripts\CharacterBehaviors.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Examples\Fisticuffs\Scripts\FisticuffsController.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Examples\Fisticuffs\Scripts\FollowCameraPrecise.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Examples\Fisticuffs\Scripts\GloveScript.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Examples\Fisticuffs\Scripts\LookAtCameraFisticuffs.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Examples\Fisticuffs\Scripts\TimedSelfDeactivate.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Examples\Fisticuffs\Scripts\TimedSelfDestruct.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\ARCamera.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\ARController.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\ARMarker.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\ARNativePlugin.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\ARNativePluginStatic.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\AROrigin.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\ARPattern.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\ARTrackedCamera.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\ARTrackedObject.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\ARTransitionalCamera.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\ARUtilityFunctions.cs" />
+     <Compile Include="Assets\ARToolKit5-Unity\Scripts\PluginFunctions.cs" />
      <Compile Include="Assets\CameraBehaviour\CameraPlaneController.cs" />
      <Compile Include="Assets\CameraBehaviour\CameraStaticController.cs" />
+     <Compile Include="Assets\CameraBehaviour\CapsulaCollisionBehaviour.cs" />
      <Compile Include="Assets\CameraBehaviour\SphereShooter.cs" />
+     <Compile Include="Assets\DeviceLocationServices\AccelerometerControl.cs" />
+     <Compile Include="Assets\DeviceLocationServices\GPSControl.cs" />
+     <Compile Include="Assets\DeviceLocationServices\GyroControl.cs" />
+     <Compile Include="Assets\DeviceLocationServices\UpdateText.cs" />
      <Compile Include="Assets\MainMenu\ClickHandler.cs" />
      <Compile Include="Assets\ModelInteraction\BackHandler.cs" />
      <Compile Include="Assets\ModelInteraction\BodyCollisionHandler.cs" />
      <Compile Include="Assets\ModelInteraction\CameraClickHandler.cs" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\ARToolKit5-Unity\CHANGELOG.txt" />
+     <None Include="Assets\ARToolKit5-Unity\Resources\ardata\markers\patt.kanji.txt" />
+     <None Include="Assets\ARToolKit5-Unity\Resources\Shaders\VideoPlaneNoLight.shader" />
+     <None Include="Assets\ARToolKit5-Unity\Resources\Shaders\Mask.shader" />
+     <None Include="Assets\ARToolKit5-Unity\Resources\ardata\markers\patt.hiro.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -70,12 +101,6 @@
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.iOS.Extensions.Common">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
