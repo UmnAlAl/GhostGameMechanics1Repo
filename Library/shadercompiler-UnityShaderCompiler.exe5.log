@@ -1,0 +1,69 @@
+Base path: C:/Program Files/Unity/Editor/Data
+Cmd: getPlatforms
+Cmd: disassembleShader
+  api=5 insize=8785 outsize=8785 ok=1
+Cmd: disassembleShader
+  api=5 insize=7045 outsize=7045 ok=1
+Cmd: disassembleShader
+  api=5 insize=8955 outsize=8955 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=5133 outsize=5133 ok=1
+Cmd: disassembleShader
+  api=5 insize=4957 outsize=4957 ok=1
+Cmd: disassembleShader
+  api=5 insize=6097 outsize=6097 ok=1
+Cmd: disassembleShader
+  api=5 insize=6035 outsize=6035 ok=1
+Cmd: disassembleShader
+  api=5 insize=7073 outsize=7073 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=1725 outsize=1725 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=8105 outsize=8105 ok=1
+Cmd: disassembleShader
+  api=5 insize=10189 outsize=10189 ok=1
+Cmd: disassembleShader
+  api=5 insize=8734 outsize=8734 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=4044 outsize=4044 ok=1
+Cmd: disassembleShader
+  api=5 insize=4778 outsize=4778 ok=1
+Cmd: disassembleShader
+  api=5 insize=5579 outsize=5579 ok=1
+Cmd: disassembleShader
+  api=5 insize=5433 outsize=5433 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=958 outsize=958 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Unhandled exception: Protocol error - failed to read correct magic number
+
+Quitting shader compiler process

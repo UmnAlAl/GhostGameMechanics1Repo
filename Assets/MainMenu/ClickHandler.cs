@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ClickHandler : MonoBehaviour {
 
 	public GameObject loadingImage;
-	private const int quitLevel = 5;
+	private const int quitLevel = 6;
 
 	public void HandleButtonClick(int level){
 		if (level.Equals (quitLevel)) {
