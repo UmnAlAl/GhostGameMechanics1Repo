@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/ModelInteractionWithARToolkit/InteractionARScene.unity
   - enabled: 1
     path: Assets/DeviceLocationServices/DeviceLocationServicesScene.unity
+  - enabled: 1
+    path: Assets/NFT_Example/NFT_ExampleScene.unity
