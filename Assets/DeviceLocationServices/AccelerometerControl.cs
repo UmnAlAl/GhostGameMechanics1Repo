@@ -6,7 +6,7 @@ public class AccelerometerControl : MonoBehaviour {
 
 	public GameObject objToControl;
 	private Rigidbody rb;
-	float speed = 500F;
+	float speed = 5F;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +17,10 @@ public class AccelerometerControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 acc = Input.acceleration;
+		acc *= speed * Time.deltaTime;
 		//rb.AddForce(acc.x * speed, 0, acc.y * speed);
-		rb.AddForce(acc.x * speed, acc.y * speed, acc.z * speed);
+		//rb.AddForce(acc.x * speed, acc.y * speed, acc.z * speed);
+		objToControl.GetComponent<Transform>().Translate(acc * speed * Time.deltaTime);
 	}
 
 }
