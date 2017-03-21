@@ -30,6 +30,7 @@ public class UpdateText : MonoBehaviour {
 
 	public void OnSpeedChange(float delta) {
 		gyroControl.speed += delta;
+		//MovementWithGPS.speed += delta;
 	}
 
 }//class

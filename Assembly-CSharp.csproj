@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{BD4F0541-778A-F2B9-4EEE-32C4C11A6FB5}</ProjectGuid>
+    <ProjectGuid>{5364824D-D875-05BD-BC68-5AC924F2CEE4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -73,11 +73,14 @@
      <Compile Include="Assets\DeviceLocationServices\AccelerometerControl.cs" />
      <Compile Include="Assets\DeviceLocationServices\GPSControl.cs" />
      <Compile Include="Assets\DeviceLocationServices\GyroControl.cs" />
+     <Compile Include="Assets\DeviceLocationServices\MovementWithGPS.cs" />
+     <Compile Include="Assets\DeviceLocationServices\SphereShooterWithDeviceLocation.cs" />
      <Compile Include="Assets\DeviceLocationServices\UpdateText.cs" />
      <Compile Include="Assets\MainMenu\ClickHandler.cs" />
      <Compile Include="Assets\ModelInteraction\BackHandler.cs" />
      <Compile Include="Assets\ModelInteraction\BodyCollisionHandler.cs" />
      <Compile Include="Assets\ModelInteraction\CameraClickHandler.cs" />
+     <Compile Include="Assets\NFT_Example\PlaneTexture.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\ARToolKit5-Unity\CHANGELOG.txt" />
      <None Include="Assets\ARToolKit5-Unity\Resources\ardata\markers\patt.kanji.txt" />

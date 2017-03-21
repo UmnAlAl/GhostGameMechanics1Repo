@@ -27,7 +27,7 @@ public class GPSControl : MonoBehaviour {
 		if (!Input.location.isEnabledByUser) {
 			yield break;
 		}
-		Input.location.Start ();
+		Input.location.Start (0.5f, 0.1f);
 		int maxWait = 20;
 		while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0) {
 			yield return new WaitForSeconds(1);
@@ -45,6 +45,8 @@ public class GPSControl : MonoBehaviour {
 		latitude = Input.location.lastData.latitude;
 		longitude = Input.location.lastData.longitude;
 		altitude = Input.location.lastData.altitude;
+
+		Input.location.Stop ();
 
 	}//func
 
