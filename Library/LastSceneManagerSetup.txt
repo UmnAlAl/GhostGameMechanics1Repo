@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/DeviceLocationServices/DeviceLocationServicesScene.unity
+- path: Assets/MainMenu/MainMenuScene.unity
   isLoaded: 1
   isActive: 1

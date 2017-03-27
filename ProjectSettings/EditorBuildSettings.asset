@@ -10,9 +10,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ModelInteraction/ModelInteracrionScene.unity
   - enabled: 1
-    path: Assets/CameraBehaviour/CameraBehaviourScene.unity
-  - enabled: 1
     path: Assets/ModelInteractionWithARToolkit/InteractionARScene.unity
+  - enabled: 1
+    path: Assets/CameraBehaviour/CameraBehaviourScene.unity
   - enabled: 1
     path: Assets/DeviceLocationServices/DeviceLocationServicesScene.unity
   - enabled: 1

@@ -25,8 +25,10 @@ public class UpdateText : MonoBehaviour {
 			text2.text = "Acceleration x: " + gyroControl.gyro.userAcceleration.x.ToString()
 				+ " y: " + gyroControl.gyro.userAcceleration.y.ToString()
 				+ " z: " + gyroControl.gyro.userAcceleration.z.ToString();
-			text4.text = "El_attd: " + gyroControl.gyro.attitude.eulerAngles.ToString ()
-			+ " El_lc_rot: " + (gyroControl.gyro.attitude * (new Quaternion (0, 0, 1, 0))).eulerAngles.ToString ();
+			text4.text = /*"El_attd: " + gyroControl.gyro.attitude.eulerAngles.ToString ()
+			+ " El_lc_rot: " + (gyroControl.gyro.attitude * (new Quaternion (0, 0, 1, 0))).eulerAngles.ToString ()
+				+*/ "Cm_frwrd: " + gyroControl.cameraObject.transform.forward.ToString()
+				+ " Position: " + gyroControl.cameraObject.transform.position.ToString();
 			text3.text = "Move speed: " + MovementWithGPS.speed;
 		}
 	}

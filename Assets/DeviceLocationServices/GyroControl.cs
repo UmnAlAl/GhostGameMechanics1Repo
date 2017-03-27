@@ -11,7 +11,7 @@ public class GyroControl : MonoBehaviour {
 	public static float cutDeltaForDirectionDetection = 0.08f;
 
 	public GameObject cameraContainer;
-	private GameObject cameraObject;
+	public GameObject cameraObject;
 	private Camera camera;
 	private Quaternion rot;
 	private Rigidbody rb;
@@ -21,8 +21,8 @@ public class GyroControl : MonoBehaviour {
 		gyroEnabled = EnableGyro ();
 		cameraObject = cameraContainer.transform.GetChild (0).gameObject;
 		camera = cameraObject.GetComponent<Camera> ();
-		//rb = cameraContainer.GetComponent<Rigidbody> ();
-		//rb.freezeRotation = true;
+		rb = cameraContainer.GetComponent<Rigidbody> ();
+		rb.freezeRotation = true;
 	}
 	
 	private bool EnableGyro() {
