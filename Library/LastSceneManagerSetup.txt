@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/NFT_Example/NFT_ExampleScene.unity
+- path: Assets/DeviceLocationServices/DeviceLocationServicesScene.unity
   isLoaded: 1
   isActive: 1

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementWithGPS : MonoBehaviour {
 
-	public static float speed = 100;
+	public static float speed = 10000;
 
 	public GameObject GPSobj;
 	private GPSControl gpsControl;
@@ -12,7 +12,8 @@ public class MovementWithGPS : MonoBehaviour {
 	public GameObject cameraContainer;
 	private GameObject cameraObject;
 	private Camera camera;
-	private Rigidbody rb;
+	//private Rigidbody rbContainer;
+	private Rigidbody rbCamera;
 
 	private Vector3 curGPS;
 	private Vector3 prevGPS;
@@ -23,8 +24,8 @@ public class MovementWithGPS : MonoBehaviour {
 		gpsControl = GPSobj.GetComponent<GPSControl> ();
 		cameraObject = cameraContainer.transform.GetChild (0).gameObject;
 		camera = cameraObject.GetComponent<Camera> ();
-		rb = cameraContainer.GetComponent<Rigidbody> ();
-		rb.freezeRotation = true;
+		rbCamera = cameraObject.GetComponent<Rigidbody> ();
+		rbCamera.freezeRotation = true;
 	}
 	
 	// Update is called once per frame
@@ -44,8 +45,12 @@ public class MovementWithGPS : MonoBehaviour {
 		prevGPS = curGPS;
 		curGPS = new Vector3 (curLat, 0, curLon);
 		Vector3 delta = curGPS - prevGPS;
-		Vector3 targetPosition = cameraContainer.transform.position + delta * speed;
-		cameraContainer.transform.position = targetPosition;
+		float deltaLen = delta.magnitude;
+		//Vector3 targetPosition = cameraContainer.transform.position + delta * speed;
+		Vector3 transformVec = new Vector3(0, 0, deltaLen * speed);
+		//cameraObject.transform.Translate (transformVec, Space.Self);
+		//rb.AddForce(0,0,-deltaLen * speed);
+		rbCamera.AddRelativeForce(transformVec);
 
 	}//update
 

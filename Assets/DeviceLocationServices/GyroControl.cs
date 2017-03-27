@@ -21,8 +21,8 @@ public class GyroControl : MonoBehaviour {
 		gyroEnabled = EnableGyro ();
 		cameraObject = cameraContainer.transform.GetChild (0).gameObject;
 		camera = cameraObject.GetComponent<Camera> ();
-		rb = cameraContainer.GetComponent<Rigidbody> ();
-		rb.freezeRotation = true;
+		//rb = cameraContainer.GetComponent<Rigidbody> ();
+		//rb.freezeRotation = true;
 	}
 	
 	private bool EnableGyro() {
@@ -40,8 +40,8 @@ public class GyroControl : MonoBehaviour {
 		if (gyroEnabled) {
 			cameraObject.transform.localRotation = gyro.attitude * rot;
 
-			Vector3 moveVector = makeMovementFromAcceleration(gyro.userAcceleration);
-			rb.AddForce (moveVector * speed);
+			//Vector3 moveVector = makeMovementFromAcceleration(gyro.userAcceleration);
+			//rb.AddForce (moveVector * speed);
 		}
 	}
 

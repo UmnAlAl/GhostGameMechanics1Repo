@@ -27,26 +27,31 @@ public class GPSControl : MonoBehaviour {
 		if (!Input.location.isEnabledByUser) {
 			yield break;
 		}
-		Input.location.Start (0.5f, 0.1f);
-		int maxWait = 20;
-		while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0) {
-			yield return new WaitForSeconds(1);
-			maxWait--;
-		}
+		while (true) {
+			if ((Input.location.status != LocationServiceStatus.Running) || (Input.location.status != LocationServiceStatus.Initializing)) {
+				Input.location.Start (0.1f, 0.1f);
+				int maxWait = 5;
+				while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0) {
+					yield return new WaitForSeconds (1);
+					maxWait--;
+				}
 
-		if (maxWait <= 0) {
-			yield break;
-		}
+				if (maxWait <= 0) {
+					continue;
+				}
 
-		if (Input.location.status == LocationServiceStatus.Failed) {
-			yield break;
-		}
+				if (Input.location.status == LocationServiceStatus.Failed) {
+					continue;
+				}
+			}//if not running
 
-		latitude = Input.location.lastData.latitude;
-		longitude = Input.location.lastData.longitude;
-		altitude = Input.location.lastData.altitude;
+			latitude = Input.location.lastData.latitude;
+			longitude = Input.location.lastData.longitude;
+			altitude = Input.location.lastData.altitude;
 
-		Input.location.Stop ();
+			yield return new WaitForEndOfFrame(); 
+
+		}//while
 
 	}//func
 
