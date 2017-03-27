@@ -69,6 +69,8 @@
      <Compile Include="Assets\CameraBehaviour\CameraPlaneController.cs" />
      <Compile Include="Assets\CameraBehaviour\CameraStaticController.cs" />
      <Compile Include="Assets\CameraBehaviour\CapsulaCollisionBehaviour.cs" />
+     <Compile Include="Assets\CameraBehaviour\EnemyBehaviour.cs" />
+     <Compile Include="Assets\CameraBehaviour\EnemyGenerator.cs" />
      <Compile Include="Assets\CameraBehaviour\SphereShooter.cs" />
      <Compile Include="Assets\DeviceLocationServices\AccelerometerControl.cs" />
      <Compile Include="Assets\DeviceLocationServices\GPSControl.cs" />
