@@ -10,10 +10,13 @@ public class UpdateText : MonoBehaviour {
 	public Text text3;
 	public Text text4;
 	public GameObject gyroControlObj;
-	private GyroControl gyroControl;
+    public GameObject cmcObj;
+    private GyroControl gyroControl;
+    private CharacterMovementControl cmc;
 
 	void Start() {
 		gyroControl = gyroControlObj.GetComponent<GyroControl> ();
+        cmc = cmcObj.GetComponent<CharacterMovementControl>();
 	}
 
 	// Update is called once per frame
@@ -29,13 +32,13 @@ public class UpdateText : MonoBehaviour {
 			+ " El_lc_rot: " + (gyroControl.gyro.attitude * (new Quaternion (0, 0, 1, 0))).eulerAngles.ToString ()
 				+*/ "Cm_frwrd: " + gyroControl.cameraObject.transform.forward.ToString()
 				+ " Position: " + gyroControl.cameraObject.transform.position.ToString();
-			text3.text = "Move speed: " + MovementWithGPS.speed;
 		}
-	}
+        text3.text = "Move speed: " + cmc.moveSpeed.ToString() + " deltaGPS: " + cmc._debug_DeltaGPS.ToString();
+    }
 
 	public void OnSpeedChange(float delta) {
-		//gyroControl.speed += delta;
-		MovementWithGPS.speed += delta;
+        //gyroControl.speed += delta;
+        cmc.moveSpeed += delta;
 	}
 
 }//class

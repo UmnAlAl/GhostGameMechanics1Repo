@@ -29,7 +29,7 @@ public class GPSControl : MonoBehaviour {
 		}
 		while (true) {
 			if ((Input.location.status != LocationServiceStatus.Running) || (Input.location.status != LocationServiceStatus.Initializing)) {
-				Input.location.Start (0.1f, 0.1f);
+				Input.location.Start (0.1f, 0.5f);
 				int maxWait = 5;
 				while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0) {
 					yield return new WaitForSeconds (1);
