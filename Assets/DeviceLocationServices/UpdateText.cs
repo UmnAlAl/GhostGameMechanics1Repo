@@ -9,6 +9,7 @@ public class UpdateText : MonoBehaviour {
 	public Text text2;
 	public Text text3;
 	public Text text4;
+    public Text textBtnSwitchMvMode;
 	public GameObject gyroControlObj;
     public GameObject cmcObj;
     private GyroControl gyroControl;
@@ -25,10 +26,15 @@ public class UpdateText : MonoBehaviour {
 			+ " Long: " + GPSControl.Instance.longitude.ToString ()
 			+ " Alt: " + GPSControl.Instance.altitude.ToString ();
 		if (gyroControl.gyroEnabled) {
-			text2.text = "Acceleration x: " + gyroControl.gyro.userAcceleration.x.ToString()
+            Vector3 userAcc = gyroControl.gyro.userAcceleration;
+            //text2.text = "Acceleration magn: " + cmc._debug_AcelerationMagn.ToString();
+            text2.text = "Acceleration xy: " + ((userAcc.x - userAcc.y) * 1000).ToString("0.000")
+                + "\t yz: " + ((userAcc.y - userAcc.z) * 1000).ToString("0.000")
+                + "\t xz: " + ((userAcc.y - userAcc.z) * 1000).ToString("0.000");
+            /*text2.text = "Acceleration x: " + gyroControl.gyro.userAcceleration.x.ToString()
 				+ " y: " + gyroControl.gyro.userAcceleration.y.ToString()
-				+ " z: " + gyroControl.gyro.userAcceleration.z.ToString();
-			text4.text = /*"El_attd: " + gyroControl.gyro.attitude.eulerAngles.ToString ()
+				+ " z: " + gyroControl.gyro.userAcceleration.z.ToString();*/
+            text4.text = /*"El_attd: " + gyroControl.gyro.attitude.eulerAngles.ToString ()
 			+ " El_lc_rot: " + (gyroControl.gyro.attitude * (new Quaternion (0, 0, 1, 0))).eulerAngles.ToString ()
 				+*/ "Cm_frwrd: " + gyroControl.cameraObject.transform.forward.ToString()
 				+ " Position: " + gyroControl.cameraObject.transform.position.ToString();
@@ -40,5 +46,18 @@ public class UpdateText : MonoBehaviour {
         //gyroControl.speed += delta;
         cmc.moveSpeed += delta;
 	}
+
+    public void OnChengeMovModeClick()
+    {
+        cmc.switchMovementMode();
+        if(cmc.isAccMovement)
+        {
+            textBtnSwitchMvMode.text = "Switch mov to GPS";
+        }
+        else
+        {
+            textBtnSwitchMvMode.text = "Switch mov to Acclrmtr";
+        }
+    }
 
 }//class

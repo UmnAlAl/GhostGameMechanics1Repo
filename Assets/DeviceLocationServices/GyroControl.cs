@@ -24,7 +24,7 @@ public class GyroControl : MonoBehaviour {
 		if (SystemInfo.supportsGyroscope) {
 			gyro = Input.gyro;
 			gyro.enabled = true;
-			cameraContainer.transform.rotation = Quaternion.Euler (90f, 0f, 0f);
+			cameraContainer.transform.rotation = Quaternion.Euler (90f, -90f, 0f);
 			rot = new Quaternion (0, 0, 1, 0);
 			return true;
 		}
@@ -40,13 +40,6 @@ public class GyroControl : MonoBehaviour {
 
 	public static Quaternion GyroToUnityQuaternion(Quaternion q) {
 		return new Quaternion (q.x, q.z, -q.y, -q.w);
-	}
-
-	private static float mod(float x) {
-		if (x >= 0) {
-			return x;
-		}
-		return -x;
 	}
 
 

@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class CharacterMovementControl : MonoBehaviour {
 
+    public bool isGPSMovement = false;
+    public bool isAccMovement = true;
+
+    //for GPS
     public GameObject gpsControlObject;
     public GameObject cameraContainer;
-    public float moveSpeed = 10;
+    public float moveSpeed = 30;
 
     public float _debug_DeltaGPS;
 
@@ -20,19 +24,33 @@ public class CharacterMovementControl : MonoBehaviour {
     private Vector3 prevGPS;
     private Vector3 curGPS;
 
+    //for gyro
+    public GyroControl gyroControl;
+    public float _debug_AcelerationMagn;
+
     // Use this for initialization
     void Start () {
         gpsControl = gpsControlObject.GetComponent<GPSControl>();
 		characterController = cameraContainer.GetComponent<CharacterController>();
         cameraObject = cameraContainer.transform.GetChild(0).gameObject;
         cam = cameraObject.GetComponent<Camera>();
+        gyroControl = gameObject.GetComponent<GyroControl>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         //moveWithKeys();
         //rotateWithKeys();
-        doGPSMovement();
+        if(isGPSMovement)
+        {
+            doGPSMovement();
+        }
+        if (isAccMovement)
+        {
+
+            doAccelerometerMovement();
+        }
+
 	}
 
     void doGPSMovement()
@@ -57,7 +75,7 @@ public class CharacterMovementControl : MonoBehaviour {
         curGPS = new Vector3(lat, lon, alt); //update current position
         float deltaGPSval = (curGPS - prevGPS).magnitude; //delta position between prev and current read
         float gpsScaleFactor = 100000f;
-        float deltaGPSCutStep = 10 / gpsScaleFactor;
+        float deltaGPSCutStep = 9 / gpsScaleFactor;
 
         _debug_DeltaGPS = deltaGPSval * gpsScaleFactor; //for debug output
 
@@ -71,6 +89,21 @@ public class CharacterMovementControl : MonoBehaviour {
         }
 
         Vector3 moveVector = cameraObject.transform.forward * deltaGPSval * moveSpeed * gpsScaleFactor;
+        moveVector *= Time.deltaTime;
+        characterController.Move(moveVector);
+    }
+
+    void doAccelerometerMovement()
+    {
+        if(!gyroControl.gyroEnabled)
+        {
+            return;
+        }
+
+        float accelerationScaleFactor = 100f;
+        Vector3 userAcc = gyroControl.gyro.userAcceleration;
+        _debug_AcelerationMagn = userAcc.magnitude * accelerationScaleFactor;
+        Vector3 moveVector = cameraObject.transform.forward * userAcc.magnitude * moveSpeed;
         moveVector *= Time.deltaTime;
         characterController.Move(moveVector);
     }
@@ -91,6 +124,29 @@ public class CharacterMovementControl : MonoBehaviour {
         float rotation = Input.GetAxis("Horizontal");
         rotation *= rotationSpeed * Time.deltaTime;
         cameraObject.transform.Rotate(0, rotation, 0);
+    }
+
+    public void switchMovementMode()
+    {
+        if(isAccMovement)
+        {
+            isAccMovement = false;
+            isGPSMovement = true;
+        }
+        else
+        {
+            isAccMovement = true;
+            isGPSMovement = false;
+        }
+    }
+
+    private static float mod(float x)
+    {
+        if (x >= 0)
+        {
+            return x;
+        }
+        return -x;
     }
 
 }
