@@ -100,12 +100,18 @@ public class CharacterMovementControl : MonoBehaviour {
             return;
         }
 
-        float accelerationScaleFactor = 100f;
+        float accelerationScaleFactor = 1000f;
+        float accelerationZCutStep = 75f / accelerationScaleFactor; 
         Vector3 userAcc = gyroControl.gyro.userAcceleration;
-        _debug_AcelerationMagn = userAcc.magnitude * accelerationScaleFactor;
-        Vector3 moveVector = cameraObject.transform.forward * userAcc.magnitude * moveSpeed;
+        if(mod(userAcc.z) < accelerationZCutStep) //nevelate noise and back acceleration after stop
+        {
+            return;
+        }
+        Vector3 moveVector = cameraObject.transform.forward * (-userAcc.z) * moveSpeed;
         moveVector *= Time.deltaTime;
         characterController.Move(moveVector);
+
+        _debug_AcelerationMagn = (-userAcc.z) * accelerationScaleFactor;
     }
 
     //for test on PC

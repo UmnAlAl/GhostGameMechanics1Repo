@@ -28,18 +28,18 @@ public class UpdateText : MonoBehaviour {
 		if (gyroControl.gyroEnabled) {
             Vector3 userAcc = gyroControl.gyro.userAcceleration;
             //text2.text = "Acceleration magn: " + cmc._debug_AcelerationMagn.ToString();
-            text2.text = "Acceleration xy: " + ((userAcc.x - userAcc.y) * 1000).ToString("0.000")
+            /*text2.text = "Acceleration xy: " + ((userAcc.x - userAcc.y) * 1000).ToString("0.000")
                 + "\t yz: " + ((userAcc.y - userAcc.z) * 1000).ToString("0.000")
-                + "\t xz: " + ((userAcc.y - userAcc.z) * 1000).ToString("0.000");
-            /*text2.text = "Acceleration x: " + gyroControl.gyro.userAcceleration.x.ToString()
+                + "\t xz: " + ((userAcc.y - userAcc.z) * 1000).ToString("0.000");*/
+            text2.text = "Acceleration x: " + gyroControl.gyro.userAcceleration.x.ToString()
 				+ " y: " + gyroControl.gyro.userAcceleration.y.ToString()
-				+ " z: " + gyroControl.gyro.userAcceleration.z.ToString();*/
+				+ " z: " + gyroControl.gyro.userAcceleration.z.ToString();
             text4.text = /*"El_attd: " + gyroControl.gyro.attitude.eulerAngles.ToString ()
 			+ " El_lc_rot: " + (gyroControl.gyro.attitude * (new Quaternion (0, 0, 1, 0))).eulerAngles.ToString ()
 				+*/ "Cm_frwrd: " + gyroControl.cameraObject.transform.forward.ToString()
 				+ " Position: " + gyroControl.cameraObject.transform.position.ToString();
 		}
-        text3.text = "Move speed: " + cmc.moveSpeed.ToString() + " deltaGPS: " + cmc._debug_DeltaGPS.ToString();
+        text3.text = "Move speed: " + cmc.moveSpeed.ToString() + " deltaGPS: " + cmc._debug_AcelerationMagn.ToString();
     }
 
 	public void OnSpeedChange(float delta) {
