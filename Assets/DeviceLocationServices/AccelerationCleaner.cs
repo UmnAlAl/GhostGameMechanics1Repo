@@ -39,17 +39,33 @@ public class AccelerationCleaner : MonoBehaviour {
         return md;
     }
 
-    public Vector3 getFilteredAcceleration()
+    public Vector3 getFilteredAcceleration(out MovementStepData md)
     {
         MovementStepData msd = getRawData();
+        md = msd;
         int N = dataQueue.Count;
         if (N == 0) N++;
 
-        foreach (MovementStepData md in dataQueue)
-        {
+        float diffOfRotAndMovEnergies = 0.4f;
+        if ((msd.gyroRotationEnergy - msd.linearAccEnergy) > diffOfRotAndMovEnergies)
+            return Vector3.zero;
 
+        float z = msd.linearAccAverage.z;
+        float deltaToDistinguishFrontAndBack = 0.033f;
+
+        if(z > 0) //if moving back
+        {
+            if (z < deltaToDistinguishFrontAndBack) //not strongly - forbid back movement
+            {
+                msd.linearAccAverage.z = 0;
+            }
+            else //strongly - enforce
+            {
+                msd.linearAccAverage.z *= 2;
+            }
         }
-        return msd.linearAccClearedFromConstant;
+
+        return msd.linearAccAverage;
     }
 
     public void insertData(GyroControl gc)
@@ -57,6 +73,8 @@ public class AccelerationCleaner : MonoBehaviour {
         Gyroscope gyro = gc.gyro;
         Vector3 linearAcc = gyro.userAcceleration;
         Vector3 gyroRotationSpeed = gyro.rotationRateUnbiased;
+        //Vector3 linearAcc = new Vector3(0.1f, 0.1f, 0.2f);
+        //Vector3 gyroRotationSpeed = new Vector3(0.1f, 0.1f, 0.2f);
         float linearAccMagnitude = linearAcc.magnitude;
         float gyroRotationSpeedMagnitude = gyroRotationSpeed.magnitude;
 

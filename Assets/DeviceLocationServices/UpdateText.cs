@@ -31,9 +31,9 @@ public class UpdateText : MonoBehaviour {
             text2.text = "Acc avg: " + cmc._debug_md_.linearAccAverage.ToString("0.0000")
                 + "\t -cnst: " + cmc._debug_md_.linearAccClearedFromConstant.ToString("0.0000")
                 + "\t energ: " + cmc._debug_md_.linearAccEnergy.ToString();
-            /*text2.text = "Acceleration x: " + gyroControl.gyro.userAcceleration.x.ToString()
+            /*text2.text = "Acceleration z: " + gyroControl.gyro.userAcceleration.z.ToString()
 				+ " y: " + gyroControl.gyro.userAcceleration.y.ToString()
-				+ " z: " + gyroControl.gyro.userAcceleration.z.ToString();*/
+				+ " x: " + gyroControl.gyro.userAcceleration.x.ToString();*/
             /*text4.text =  "Cam_frwrd: " + gyroControl.cameraObject.transform.forward.ToString()
 				+ " Position: " + gyroControl.cameraObject.transform.position.ToString();*/
             text4.text = "Gyro avg-cnst: " + cmc._debug_md_.gyroRotationSpeedClearedFromConstant.ToString()

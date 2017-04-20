@@ -111,12 +111,13 @@ public class CharacterMovementControl : MonoBehaviour {
 
         acCleaner.insertData(gyroControl);
 
-        //Vector3 userAcc = acCleaner.getFilteredAcceleration();
-        AccelerationCleaner.MovementStepData md = acCleaner.getRawData();
+        AccelerationCleaner.MovementStepData md;
+        Vector3 userAcc = acCleaner.getFilteredAcceleration(out md);
         _debug_md_ = md;
 
-        float accelerationScaleFactor = 10f;
-        Vector3 moveVector = -cameraObject.transform.forward * md.linearAccAverage.z * moveSpeed;
+        //float accelerationScaleFactor = 10f;
+        Vector3 moveVector;
+        moveVector = -cameraObject.transform.forward * userAcc.z * moveSpeed;
         moveVector *= Time.deltaTime;
         characterController.Move(moveVector);
 
