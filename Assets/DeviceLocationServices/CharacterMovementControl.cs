@@ -26,7 +26,9 @@ public class CharacterMovementControl : MonoBehaviour {
 
     //for gyro
     public GyroControl gyroControl;
-    public float _debug_AcelerationMagn;
+    public AccelerationCleaner acCleaner;
+
+    public AccelerationCleaner.MovementStepData _debug_md_;
 
     // Use this for initialization
     void Start () {
@@ -35,6 +37,8 @@ public class CharacterMovementControl : MonoBehaviour {
         cameraObject = cameraContainer.transform.GetChild(0).gameObject;
         cam = cameraObject.GetComponent<Camera>();
         gyroControl = gameObject.GetComponent<GyroControl>();
+        acCleaner = cameraContainer.GetComponent<AccelerationCleaner>();
+        acCleaner.Init(gyroControl);
 	}
 	
 	// Update is called once per frame
@@ -93,6 +97,11 @@ public class CharacterMovementControl : MonoBehaviour {
         characterController.Move(moveVector);
     }
 
+/*
+*************************************************************************************************************************************
+*/
+
+
     void doAccelerometerMovement()
     {
         if(!gyroControl.gyroEnabled)
@@ -100,19 +109,24 @@ public class CharacterMovementControl : MonoBehaviour {
             return;
         }
 
-        float accelerationScaleFactor = 1000f;
-        float accelerationZCutStep = 75f / accelerationScaleFactor; 
-        Vector3 userAcc = gyroControl.gyro.userAcceleration;
-        if(mod(userAcc.z) < accelerationZCutStep) //nevelate noise and back acceleration after stop
-        {
-            return;
-        }
-        Vector3 moveVector = cameraObject.transform.forward * (-userAcc.z) * moveSpeed;
+        acCleaner.insertData(gyroControl);
+
+        //Vector3 userAcc = acCleaner.getFilteredAcceleration();
+        AccelerationCleaner.MovementStepData md = acCleaner.getRawData();
+        _debug_md_ = md;
+
+        float accelerationScaleFactor = 10f;
+        Vector3 moveVector = -cameraObject.transform.forward * md.linearAccAverage.z * moveSpeed;
         moveVector *= Time.deltaTime;
         characterController.Move(moveVector);
 
-        _debug_AcelerationMagn = (-userAcc.z) * accelerationScaleFactor;
+        
     }
+
+
+/*
+*************************************************************************************************************************************
+*/
 
     //for test on PC
     void moveWithKeys()

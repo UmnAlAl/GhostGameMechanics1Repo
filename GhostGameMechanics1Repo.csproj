@@ -101,7 +101,7 @@
     <Compile Include="Assets\CameraBehaviour\EnemyBehaviour.cs" />
     <Compile Include="Assets\CameraBehaviour\EnemyGenerator.cs" />
     <Compile Include="Assets\CameraBehaviour\SphereShooter.cs" />
-    <Compile Include="Assets\DeviceLocationServices\AccelerometerControl.cs" />
+    <Compile Include="Assets\DeviceLocationServices\AccelerationCleaner.cs" />
     <Compile Include="Assets\DeviceLocationServices\CharacterMovementControl.cs" />
     <Compile Include="Assets\DeviceLocationServices\GPSControl.cs" />
     <Compile Include="Assets\DeviceLocationServices\GyroControl.cs" />
