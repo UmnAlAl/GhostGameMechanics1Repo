@@ -24,6 +24,7 @@ public class AccelerationCleaner : MonoBehaviour {
     }
 
     private Queue<MovementStepData> dataQueue = new Queue<MovementStepData>();
+    MovementStepData lastMSD;
 
     public void Init(GyroControl gc)
     {
@@ -35,8 +36,7 @@ public class AccelerationCleaner : MonoBehaviour {
 
     public MovementStepData getRawData()
     {
-        MovementStepData md = dataQueue.Dequeue();
-        return md;
+        return lastMSD;
     }
 
     public Vector3 getFilteredAcceleration(out MovementStepData md)
@@ -45,27 +45,28 @@ public class AccelerationCleaner : MonoBehaviour {
         md = msd;
         int N = dataQueue.Count;
         if (N == 0) N++;
+        Vector3 outputVec = new Vector3(msd.linearAccAverage.x, msd.linearAccAverage.y, msd.linearAccAverage.z);
 
         float diffOfRotAndMovEnergies = 0.4f;
         if ((msd.gyroRotationEnergy - msd.linearAccEnergy) > diffOfRotAndMovEnergies)
             return Vector3.zero;
 
-        float z = msd.linearAccAverage.z;
-        float deltaToDistinguishFrontAndBack = 0.033f;
+        float z = outputVec.z;
+        float deltaToDistinguishFrontAndBack = 0.026f;
 
         if(z > 0) //if moving back
         {
             if (z < deltaToDistinguishFrontAndBack) //not strongly - forbid back movement
             {
-                msd.linearAccAverage.z = 0;
+                outputVec.z = 0;
             }
             else //strongly - enforce
             {
-                msd.linearAccAverage.z *= 2;
+                outputVec.z *= 1.5f;
             }
         }
 
-        return msd.linearAccAverage;
+        return outputVec;
     }
 
     public void insertData(GyroControl gc)
@@ -141,6 +142,7 @@ public class AccelerationCleaner : MonoBehaviour {
             dataQueue.Dequeue();
         }
         dataQueue.Enqueue(mdNew);
+        lastMSD = mdNew;
 }
 
     // Use this for initialization

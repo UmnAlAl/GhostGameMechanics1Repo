@@ -2745,6 +2745,7 @@ GameObject:
   - component: {fileID: 1856869970}
   - component: {fileID: 1856869971}
   - component: {fileID: 1856869972}
+  - component: {fileID: 1856869973}
   m_Layer: 0
   m_Name: CameraController
   m_TagString: Untagged
@@ -2804,7 +2805,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1856869967}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be79614dd2a9d5546b68102cd9d34ccd, type: 3}
   m_Name: 
@@ -2813,10 +2814,11 @@ MonoBehaviour:
   isAccMovement: 1
   gpsControlObject: {fileID: 1593620399}
   cameraContainer: {fileID: 1856869967}
-  moveSpeed: 118
+  moveSpeed: 119
   _debug_DeltaGPS: 0
   gyroControl: {fileID: 0}
   acCleaner: {fileID: 0}
+  _debug_output_vector_: {x: 0, y: 0, z: 0}
 --- !u!114 &1856869972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2829,6 +2831,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDepth: 27
+--- !u!114 &1856869973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1856869967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565f359b97ee2314cbcae08938775963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraContainer: {fileID: 1856869967}
+  moveSpeed: 30
 --- !u!1 &1921216785
 GameObject:
   m_ObjectHideFlags: 0

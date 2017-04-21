@@ -29,6 +29,7 @@ public class CharacterMovementControl : MonoBehaviour {
     public AccelerationCleaner acCleaner;
 
     public AccelerationCleaner.MovementStepData _debug_md_;
+    public Vector3 _debug_output_vector_;
 
     // Use this for initialization
     void Start () {
@@ -114,11 +115,13 @@ public class CharacterMovementControl : MonoBehaviour {
         AccelerationCleaner.MovementStepData md;
         Vector3 userAcc = acCleaner.getFilteredAcceleration(out md);
         _debug_md_ = md;
+        _debug_output_vector_ = userAcc;
 
         //float accelerationScaleFactor = 10f;
         Vector3 moveVector;
         moveVector = -cameraObject.transform.forward * userAcc.z * moveSpeed;
         moveVector *= Time.deltaTime;
+        moveVector.z = 0;
         characterController.Move(moveVector);
 
         

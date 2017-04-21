@@ -106,6 +106,7 @@
     <Compile Include="Assets\DeviceLocationServices\GPSControl.cs" />
     <Compile Include="Assets\DeviceLocationServices\GyroControl.cs" />
     <Compile Include="Assets\DeviceLocationServices\SphereShooterWithDeviceLocation.cs" />
+    <Compile Include="Assets\DeviceLocationServices\TrivialPlayerBehaviourFromAccelerometer.cs" />
     <Compile Include="Assets\DeviceLocationServices\UpdateText.cs" />
     <Compile Include="Assets\MainMenu\ClickHandler.cs" />
     <Compile Include="Assets\ModelInteraction\BackHandler.cs" />

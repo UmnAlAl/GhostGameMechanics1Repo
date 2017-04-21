@@ -29,7 +29,7 @@ public class UpdateText : MonoBehaviour {
             //Vector3 userAcc = gyroControl.gyro.userAcceleration;
             //text2.text = "Acceleration magn: " + cmc._debug_AcelerationMagn.ToString();
             text2.text = "Acc avg: " + cmc._debug_md_.linearAccAverage.ToString("0.0000")
-                + "\t -cnst: " + cmc._debug_md_.linearAccClearedFromConstant.ToString("0.0000")
+                + "\t outVc: " + cmc._debug_output_vector_.ToString("0.0000")
                 + "\t energ: " + cmc._debug_md_.linearAccEnergy.ToString();
             /*text2.text = "Acceleration z: " + gyroControl.gyro.userAcceleration.z.ToString()
 				+ " y: " + gyroControl.gyro.userAcceleration.y.ToString()
