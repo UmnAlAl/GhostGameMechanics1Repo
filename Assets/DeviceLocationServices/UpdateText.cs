@@ -40,7 +40,7 @@ public class UpdateText : MonoBehaviour {
                 + "\t energ: " + cmc._debug_md_.gyroRotationEnergy.ToString()
                 + "\t var: " + cmc._debug_md_.gyroRotationVariance.ToString();
         }
-        text3.text = "Move speed: " + cmc.moveSpeed.ToString() + " AccVar: " + cmc._debug_md_.linearAccVariance;
+        text3.text = "Move speed: " + cmc.moveSpeed.ToString();
     }
 
 	public void OnSpeedChange(float delta) {

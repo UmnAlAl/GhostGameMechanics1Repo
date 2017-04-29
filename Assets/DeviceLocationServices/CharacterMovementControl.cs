@@ -43,7 +43,7 @@ public class CharacterMovementControl : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         //moveWithKeys();
         //rotateWithKeys();
         if(isGPSMovement)
@@ -96,6 +96,7 @@ public class CharacterMovementControl : MonoBehaviour {
         Vector3 moveVector = cameraObject.transform.forward * deltaGPSval * moveSpeed * gpsScaleFactor;
         moveVector *= Time.deltaTime;
         characterController.Move(moveVector);
+
     }
 
 /*
@@ -121,10 +122,14 @@ public class CharacterMovementControl : MonoBehaviour {
         Vector3 moveVector;
         moveVector = -cameraObject.transform.forward * userAcc.z * moveSpeed;
         moveVector *= Time.deltaTime;
-        moveVector.z = 0;
+        moveVector.y = 0;
         characterController.Move(moveVector);
 
-        
+    }
+
+    void doAccelerometerMovementTrivial()
+    {
+
     }
 
 

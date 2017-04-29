@@ -52,17 +52,25 @@ public class AccelerationCleaner : MonoBehaviour {
             return Vector3.zero;
 
         float z = outputVec.z;
-        float deltaToDistinguishFrontAndBack = 0.026f;
+        float deltaToCutOffBack = 0.029f;
+        float deltaToCutOffFront = 0.029f;
 
-        if(z > 0) //if moving back
+        if (z > 0) //if moving back
         {
-            if (z < deltaToDistinguishFrontAndBack) //not strongly - forbid back movement
+            if (z < deltaToCutOffBack) //not strongly - forbid back movement
             {
                 outputVec.z = 0;
             }
             else //strongly - enforce
             {
-                outputVec.z *= 1.5f;
+                outputVec.z *= 1f;
+            }
+        }
+        else //if moving front
+        {
+            if ((-z) < deltaToCutOffFront) //not strongly - forbid back movement
+            {
+                outputVec.z = 0;
             }
         }
 
